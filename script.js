@@ -1,7 +1,7 @@
-let i = 0;
 
-let vittorie = 1;
+
 function GetComputerChoice(){
+   
     let num_dec = Math.random()*2;
     let num_int = Math.round(num_dec);
     if(num_int===0){
@@ -22,7 +22,7 @@ function PlayRound(playerchoice, computerchoice){
         }
         else if (computerchoice==="scissors"){
             return "Hai vinto!";
-            vittorie++;
+            
         }
         else {
             return "Pareggio!";
@@ -39,13 +39,13 @@ function PlayRound(playerchoice, computerchoice){
         }
         else {
             return "Hai vinto!";
-            vittorie++;
+            
         }
     }
     else if (playerchoice==="scissors"){
         if (computerchoice==="paper"){
             return "Hai vinto!";
-            vittorie++;
+           
         }
         else if (computerchoice==="scissors"){
             return "Pareggio!";
@@ -62,26 +62,43 @@ function PlayRound(playerchoice, computerchoice){
 }
 
 function game(){
-    for(i=1;i<=5;i++){
+    let vittorie=0;
+    let sconfitte=0;
+    for(let i=1;i<=5;i++){
+        
         let playerchoice= prompt("Scegli rock, paper, scissors");
         let playerchoice_lower = playerchoice.toLowerCase();
         let computerchoice = GetComputerChoice();
-        console.log(PlayRound(playerchoice_lower,computerchoice));
-        if (playerchoice_lower===computerchoice){
+        
+        let result = PlayRound(playerchoice_lower,computerchoice);
+        console.log(result);
+        if (playerchoice_lower===computerchoice || result==="Opzione non valida"){
             i--;
         }
-        
-    }
-    if(vittorie>2){
+        if (result==="Hai vinto!"){
+            ++vittorie;
+        }
+        else if (result==="Hai perso!"){
+            ++sconfitte;
+        }
+    }    
+    console.log("Vittorie: " + vittorie);
+    console.log("Sconfitte: " + sconfitte);
+    if (vittorie>sconfitte){
         console.log("Hai vinto il game");
     }
-    else{
-        console.log("Hai perso il game");
+    else {
+        console.log("Hai perso");
     }
-
 }
 
+
+
 game();
+
+
+
+
 
 
 
