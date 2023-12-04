@@ -1,5 +1,5 @@
-
-
+let vittorie=0;
+let sconfitte=0;
 function GetComputerChoice(){
    
     let num_dec = Math.random()*2;
@@ -18,10 +18,14 @@ function GetComputerChoice(){
 function PlayRound(playerchoice, computerchoice){
     if (playerchoice==="rock"){
         if (computerchoice==="paper"){
+            sconfitte++;
             return "Hai perso!";
+            
         }
         else if (computerchoice==="scissors"){
+            vittorie++;
             return "Hai vinto!";
+            
             
         }
         else {
@@ -35,16 +39,22 @@ function PlayRound(playerchoice, computerchoice){
             
         }
         else if (computerchoice==="scissors"){
+            sconfitte++;
             return "Hai perso!";
+            
         }
         else {
+            vittorie++;
             return "Hai vinto!";
+            
             
         }
     }
     else if (playerchoice==="scissors"){
         if (computerchoice==="paper"){
+            vittorie++;
             return "Hai vinto!";
+           
            
         }
         else if (computerchoice==="scissors"){
@@ -52,7 +62,9 @@ function PlayRound(playerchoice, computerchoice){
             
         }
         else {
+            sconfitte++
             return "Hai perso!";
+           
         }
     }
     else{
@@ -62,8 +74,7 @@ function PlayRound(playerchoice, computerchoice){
 }
 
 function game(){
-    let vittorie=0;
-    let sconfitte=0;
+  
     for(let i=1;i<=5;i++){
         
         let playerchoice= prompt("Scegli rock, paper, scissors");
@@ -75,35 +86,21 @@ function game(){
         if (playerchoice_lower===computerchoice || result==="Opzione non valida"){
             i--;
         }
-        if (result==="Hai vinto!"){
-            ++vittorie;
-        }
-        else if (result==="Hai perso!"){
-            ++sconfitte;
-        }
+        
     }    
-    console.log("Vittorie: " + vittorie);
-    console.log("Sconfitte: " + sconfitte);
-    if (vittorie>sconfitte){
-        console.log("Hai vinto il game");
-    }
-    else {
-        console.log("Hai perso");
-    }
+    
 }
 
-
-
+function messaggio_finale(){
+    console.log("Vittorie: " + vittorie);
+    console.log("Sconfitte: " + sconfitte);
+    if(vittorie>sconfitte){
+        console.log("Hai vinto il game");
+    }
+    else{
+        console.log("Hai perso il game");
+    }
+}
 game();
-
-
-
-
-
-
-
-
-
-
-
+messaggio_finale();
 
