@@ -1,5 +1,6 @@
 let vittorie=0;
 let sconfitte=0;
+let token=0;
 function GetComputerChoice(){
    
     let num_dec = Math.random()*2;
@@ -19,11 +20,13 @@ function PlayRound(playerchoice, computerchoice){
     if (playerchoice==="rock"){
         if (computerchoice==="paper"){
             sconfitte++;
+            sconfitta();
             return "Hai perso!";
             
         }
         else if (computerchoice==="scissors"){
             vittorie++;
+            vittoria();
             return "Hai vinto!";
             
             
@@ -40,11 +43,14 @@ function PlayRound(playerchoice, computerchoice){
         }
         else if (computerchoice==="scissors"){
             sconfitte++;
+            sconfitta();
             return "Hai perso!";
+
             
         }
         else {
             vittorie++;
+            vittoria();
             return "Hai vinto!";
             
             
@@ -53,6 +59,7 @@ function PlayRound(playerchoice, computerchoice){
     else if (playerchoice==="scissors"){
         if (computerchoice==="paper"){
             vittorie++;
+            vittoria();
             return "Hai vinto!";
            
            
@@ -63,6 +70,7 @@ function PlayRound(playerchoice, computerchoice){
         }
         else {
             sconfitte++
+            sconfitta();
             return "Hai perso!";
            
         }
@@ -73,7 +81,7 @@ function PlayRound(playerchoice, computerchoice){
     }
 }
 
-function game(){
+/*function game(){
   
     for(let i=1;i<=5;i++){
         
@@ -89,18 +97,108 @@ function game(){
         
     }    
     
+}*/
+
+
+
+let result = " ";
+let i=0;
+console.log(vittorie);
+console.log(sconfitte);
+
+const rockButton = document.querySelector(".rock");
+const scissorsButton = document.querySelector(".scissors");
+const paperButton = document.querySelector(".paper");
+
+rockButton.addEventListener('click', ()=>{
+    finale.textContent = " ";
+    i++;
+    let computer = GetComputerChoice();
+     result = PlayRound("rock",computer);
+     displayResult();
+     
+}) 
+
+scissorsButton.addEventListener('click', ()=>{
+    finale.textContent = " ";
+    i++;
+    let computer = GetComputerChoice();
+     result=PlayRound("scissors",computer);
+     displayResult();
+    
+})
+
+paperButton.addEventListener('click', ()=>{
+    finale.textContent = " ";
+    i++;
+    let computer = GetComputerChoice();
+    result = PlayRound("paper",computer);
+    if(token===1){
+        resultContainer.removeChild(para);
+    }
+    displayResult();
+    
+})
+const resultContainer = document.querySelector(".resultContainer")
+const para = document.createElement("p");
+
+const body = document.querySelector("body");
+function displayResult(){
+    
+
+   
+   
+
+    resultContainer.appendChild(para);
+    
+    token=1;
+   
+    para.textContent = "(" + i + ") " + result;
+    if (vittorie===5 || sconfitte===5){
+        i=0;
+        vittorie=0;
+        sconfitte=0;
+        console.log(messaggio_finale());
+    }
+}
+
+function vittoria(){
+    const tu = document.querySelector(".tu");
+    tu.textContent = vittorie;
+}
+
+function sconfitta(){
+    const bot = document.querySelector(".bot");
+    bot.textContent = sconfitte;
 }
 
 function messaggio_finale(){
     console.log("Vittorie: " + vittorie);
     console.log("Sconfitte: " + sconfitte);
+    
+    vittoria();
+    sconfitta();
+    
     if(vittorie>sconfitte){
-        console.log("Hai vinto il game");
+        finale.textContent = "Hai vinto il game";
     }
     else{
-        console.log("Hai perso il game");
+        finale.textContent = "hai perso il game";
     }
 }
-game();
-messaggio_finale();
+const finale = document.querySelector(".finale");
+const button = document.querySelector("button");
+
+
+
+
+
+
+
+
+
+
+
+
+
 
