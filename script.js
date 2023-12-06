@@ -1,24 +1,32 @@
 let vittorie=0;
 let sconfitte=0;
 let token=0;
+const giocatore = document.querySelector(".GiocatoreScelta");
+const botScelta = document.querySelector(".botScelta");
 function GetComputerChoice(){
    
     let num_dec = Math.random()*2;
     let num_int = Math.round(num_dec);
     if(num_int===0){
+        botScelta.textContent = "rock";
         return "rock";
+        
     }
     else if(num_int===1){
+        botScelta.textContent = "paper";
         return "paper";
     }
     else{
+        botScelta.textContent = "scissors";
         return "scissors";
     }
 }
 
 function PlayRound(playerchoice, computerchoice){
     if (playerchoice==="rock"){
+        giocatore.textContent = "rock";
         if (computerchoice==="paper"){
+
             sconfitte++;
             sconfitta();
             return "Hai perso!";
@@ -37,6 +45,7 @@ function PlayRound(playerchoice, computerchoice){
         }
     }
     else if (playerchoice==="paper"){
+        giocatore.textContent = "paper";
         if (computerchoice==="paper"){
             return "Pareggio!";
             
@@ -57,6 +66,7 @@ function PlayRound(playerchoice, computerchoice){
         }
     }
     else if (playerchoice==="scissors"){
+        giocatore.textContent = "scissors";
         if (computerchoice==="paper"){
             vittorie++;
             vittoria();
@@ -144,11 +154,6 @@ const para = document.createElement("p");
 
 const body = document.querySelector("body");
 function displayResult(){
-    
-
-   
-   
-
     resultContainer.appendChild(para);
     
     token=1;
@@ -156,9 +161,8 @@ function displayResult(){
     para.textContent = "(" + i + ") " + result;
     if (vittorie===5 || sconfitte===5){
         i=0;
-        vittorie=0;
-        sconfitte=0;
-        console.log(messaggio_finale());
+        messaggio_finale();
+        
     }
 }
 
@@ -185,9 +189,17 @@ function messaggio_finale(){
     else{
         finale.textContent = "hai perso il game";
     }
+
+
+    vittorie=0;
+    sconfitte=0;
+
+    vittoria();
+    sconfitta();
 }
 const finale = document.querySelector(".finale");
 const button = document.querySelector("button");
+
 
 
 

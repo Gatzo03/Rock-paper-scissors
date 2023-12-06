@@ -74,10 +74,20 @@ h3{
         width: 286px;
         text-align: center;
         justify-content: center;
-        
         margin:0px;
         align-items: center;
 
 }
+
+.scontro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+    gap:8px;
+
+}
+
+
 
 
