@@ -113,8 +113,6 @@ function PlayRound(playerchoice, computerchoice){
 
 let result = " ";
 let i=0;
-console.log(vittorie);
-console.log(sconfitte);
 
 const rockButton = document.querySelector(".rock");
 const scissorsButton = document.querySelector(".scissors");
