@@ -14,6 +14,7 @@ body{
     padding: 0px;
     background-color: gray;
     box-sizing: border-box;
+    flex-wrap: wrap;
 
     
 }
@@ -23,7 +24,7 @@ body{
     width: 200px;
     margin: 24px;
     font-size: 32px;
-    margin-top: -100px;
+    margin-top: 0px;
 
    
 }
@@ -34,7 +35,7 @@ h3{
     padding:10px 24px;
     border: 4px solid black;
     text-align: center;
-    margin:0px;
+    margin:32px;
     width: 100px;
     display: flex;
     justify-content: center;
@@ -132,7 +133,7 @@ button{
 }
 
 .bottoni{
-    margin-bottom: -100px;
+    margin-bottom: 0px;
 }
 
 h1{
